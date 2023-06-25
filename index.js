@@ -1,6 +1,9 @@
 // packages
 const fs = require('fs');
 const inquirer = require('inquirer');
+const {Circle, Square, Triangle} = require('./lib/shapes')
+
+
 
 // user prompts
 const questions = [
@@ -18,7 +21,7 @@ const questions = [
         type: 'List',
         message: 'Select logo shape',
         name: 'shape', 
-        choices: ['circle', 'square', 'triangle','rectable'],
+        choices: ['circle', 'square', 'triangle',],
     },
     {
         type: 'input',
