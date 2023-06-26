@@ -4,21 +4,28 @@ const inquirer = require('inquirer');
 const { findSourceMap } = require('module');
 const { Circle, Square, Triangle } = require('./lib/shapes')
 
-function logoMaker(data) {
-    console.log(data)
-    function render() {
-    return `<svg version="1.1"
+
+class LogoMaker {
+    constructor() {
+        this.userText = "";
+        this.userShape = "";
+    }
+    render() {
+        return `<svg version="1.1"
      width="300" height="200"
      xmlns="http://www.w3.org/2000/svg">
+        ${this.userShape}
+        ${this.userText}
 
-  <rect width="100%" height="100%" fill="red" />
+  </svg>`
+    }
 
-  <circle cx="150" cy="100" r="80" fill="green" />
+    addText(text, textcolor) {
+      this.userText =  `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${textcolor}">${text}</text>`
+    }
+    
 
-  <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
-
-     </svg>`
-}}
+}
 
 
 // user prompts
@@ -34,7 +41,7 @@ const questions = [
         name: 'textcolor',
     },
     {
-        type: 'List',
+        type: 'list',
         message: 'Select logo shape',
         name: 'shape',
         choices: ['circle', 'square', 'triangle'],
@@ -46,8 +53,8 @@ const questions = [
     },
 ];
 
-function writeToFile(fileName,data){
-    fs.writeFile(fileName,data,err => {
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, err => {
         if (err) {
             return console.log(err);
         }
@@ -59,8 +66,23 @@ function writeToFile(fileName,data){
 function init() {
     inquirer.prompt(questions)
         .then((data) => {
-            const createLogo = logoMaker(data);
-            writeToFile("example.svg", createLogo);
+            let x;
+            switch (data.shape) {
+                case 'circle':
+                    x = new Circle();
+                    break;
+                case 'square':
+                    x = new Square();
+                    break;
+                default:
+                    x = new Triangle();
+            }
+            x.addcolor(data.shapecolor);
+            //console.log(x);
+            const createLogo = new LogoMaker();
+            createLogo.addText(data.text, data.textcolor);
+            console.log(createLogo);
+            //writeToFile("example.svg", createLogo);
         })
 }
 
