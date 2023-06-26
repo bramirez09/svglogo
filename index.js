@@ -24,6 +24,9 @@ class LogoMaker {
       this.userText =  `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${textcolor}">${text}</text>`
     }
     
+    addShape(x){
+        this.userShape = shape.render(x)
+    }
 
 }
 
