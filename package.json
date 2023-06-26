@@ -4,13 +4,16 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+      "start": "node index.js",
+      "test": "jest"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
       "inquirer": "8.2.4"
     },
-    "keywords": []
+    "devDependencies": {
+      "jest": "^28.1.3"
+    }
   }
   

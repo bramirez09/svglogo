@@ -1,6 +1,7 @@
 // packages
 const fs = require('fs');
 const inquirer = require('inquirer');
+const { findSourceMap } = require('module');
 const { Circle, Square, Triangle } = require('./lib/shapes')
 
 function logoMaker(data) {
@@ -36,7 +37,7 @@ const questions = [
         type: 'List',
         message: 'Select logo shape',
         name: 'shape',
-        choices: ['circle', 'square', 'triangle',],
+        choices: ['circle', 'square', 'triangle'],
     },
     {
         type: 'input',
@@ -44,6 +45,15 @@ const questions = [
         name: 'shapecolor',
     },
 ];
+
+function writeToFile(fileName,data){
+    fs.writeFile(fileName,data,err => {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("success!")
+    })
+}
 
 // call function to initialize app
 function init() {
