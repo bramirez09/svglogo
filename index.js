@@ -4,8 +4,9 @@ const inquirer = require('inquirer');
 const { Circle, Square, Triangle } = require('./lib/shapes')
 
 function logoMaker(data) {
-    render() {
-        return `<svg version="1.1"
+    console.log(data)
+    function render() {
+    return `<svg version="1.1"
      width="300" height="200"
      xmlns="http://www.w3.org/2000/svg">
 
@@ -16,11 +17,8 @@ function logoMaker(data) {
   <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
 
      </svg>`
-    }
+}}
 
-
-
-}
 
 // user prompts
 const questions = [
