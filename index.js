@@ -24,8 +24,9 @@ class LogoMaker {
       this.userText =  `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${textcolor}">${text}</text>`
     }
     
-    addShape(x){
-        this.userShape = shape.render(x)
+    addShape(x, y){
+        this.userShape = x
+        this.shapeColor = y
     }
 
 }
@@ -84,8 +85,9 @@ function init() {
             //console.log(x);
             const createLogo = new LogoMaker();
             createLogo.addText(data.text, data.textcolor);
+            createLogo.addShape(data.shape, data.shapecolor);
             console.log(createLogo);
-            //writeToFile("example.svg", createLogo);
+            writeToFile("example.svg", createLogo);
         })
 }
 
