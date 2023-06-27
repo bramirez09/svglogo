@@ -87,7 +87,7 @@ function init() {
             createLogo.addText(data.text, data.textcolor);
             createLogo.addShape(data.shape, data.shapecolor);
             console.log(createLogo);
-            writeToFile("example.svg", createLogo);
+            writeToFile("example.svg", createLogo.render());
         })
 }
 
