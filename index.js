@@ -82,11 +82,12 @@ function init() {
                     x = new Triangle();
             }
             x.addcolor(data.shapecolor);
-            //console.log(x);
+            let shapeString = x.render();
             const createLogo = new LogoMaker();
             createLogo.addText(data.text, data.textcolor);
             createLogo.addShape(data.shape, data.shapecolor);
             console.log(createLogo);
+            createLogo.userShape = shapeString;
             writeToFile("example.svg", createLogo.render());
         })
 }
